@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% block body %}
+<div class="bg-light">
+<div class="row">
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8">
+        <div class="container">
+            <div class="alert alert-info text-sm-center text-color shadow p-3 mb-5 rounded" role="alert">
+                <span class="text-center fs-5"><h4>Registration Data</h4></span>
+                <a type="submit" class="btn btn-secondary" href="{% url 'home' %}">Back Home</a></button>
+                
+              </div>
+            <div class="">
+                <table class="table shadow p-3 mb-5 bg-light rounded">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for dt in data %}
+                      <tr>
+                        
+                        <td>{{dt.id}}</td>
+                        <td>{{dt.name}}</td>
+                        <td>{{dt.email}}</td>
+                        <td>{{dt.password}}</td>
+                        
+                        <td><a type="submit" class="btn btn-warning" href="{% url 'update' dt.pk %}">Edit</a></button></td>
+                        <td><a type="submit" class="btn btn-danger" href="{% url 'delete' dt.pk %}">Delete</a></button></td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-sm-2">
+       
+    </div>
+</div>
+</div>
+{% endblock body %}
+

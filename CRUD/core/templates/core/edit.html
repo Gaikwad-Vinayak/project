@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+{% block body %}
+<div class="bg-light">
+    
+    <div class="container shadow-lg p-3 mb-5 bg-light rounded">
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-dark text-sm-center text-color" role="alert">
+                <span class="text-center fs-5"><h4>Registration Form</h4></span>
+              </div>
+          </div>
+          <div class="col-4">
+             <form action="" method="POST">
+                 {% csrf_token %}
+                 {% for fm in form %}
+                
+                 {{fm.label_tag}} {{fm}} {{fm.errors}}<br><br>
+                 {% endfor %}
+                 <button type="submit" class="btn btn-primary">Updated</button>
+                 <a type="submit" class="btn btn-secondary btn-sm" href="{% url 'suc' %}">Back</a></button>
+                 
+             </form>
+          </div>
+          <div class="col-6">
+              {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                        <div>
+                            {{ message }}
+                        </div>
+                      </div>    
+                </p>
+
+                {% endfor %}
+            </ul>
+            {% endif %}</div>
+        </div>
+      </div>
+
+</div>
+{% endblock body %}
